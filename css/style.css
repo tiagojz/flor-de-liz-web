@@ -1,0 +1,46 @@
+/* HEADER */
+#header {
+  margin-bottom: 2em;
+}
+
+/* CARDS */
+.card-home .card-title {
+  text-align: center;
+}
+
+.card-home .card-number {
+  font-size: 5em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.card-link:hover {
+  color: rgba(0, 0, 0, .2);
+  text-decoration: underline;
+}
+
+/* CALÇADOS */
+.calcado-imagem {
+  float: left;
+  margin-right: 1em;
+  width: 70px;
+  height: 70px;
+  background-color: #ffffff;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid lightgray;
+}
+
+.calcado-nome {
+  font-size: 1.1em;
+  color: #212121;
+}  
+
+.calcado-cor {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 2px;
+  box-shadow: 0 0 1px black;
+}
