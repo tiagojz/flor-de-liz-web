@@ -17,17 +17,15 @@ final class SituacaoProducao {
 	);
 
 	public static function get( $codigo ) {
-		foreach (self::$nomes as $key => $value)
-			if ( $key === $codigo )
-				return $key;
+		if ( isset( self::$nomes[ intval( $codigo ) ] ) )
+			return intval( $codigo );
 
 		return self::NAO_INFORMADA;
 	}
 
 	public static function get_nome( $codigo ) {
-		if ( ! empty( $codigo ) && is_int( $codigo) )
-			if ( isset( self::$nomes[ $codigo ] ) )
-				return self::$nomes[ $codigo ];
+		if ( isset( self::$nomes[ intval( $codigo ) ] ) )
+			return self::$nomes[ intval( $codigo ) ];
 
 		return 'Não informada';
 	}

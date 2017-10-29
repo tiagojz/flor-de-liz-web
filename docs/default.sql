@@ -70,9 +70,7 @@ INSERT INTO calcado (nome, colecao, menor_tamanho, maior_tamanho, valor, cor, im
 ('Sapato Mr. Kitsch Le Mans Preto', 3, 38, 44, 179.90, 1051656, 'calcado-4.jpg'),
 ('Tênis Mizuno Wave Frontier 10 P Preto/Verde/Prata', 2, 38, 44, 439.99, 11009024, 'calcado-5.jpg');
 
-INSERT INTO cliente
-(nome_cliente, nome_loja, cnpj_cliente, cpf_proprietario_loja, telefone_contato, logradouro, numero, bairro, cep, cidade, uf)
-VALUES
+INSERT INTO cliente (nome_cliente, nome_loja, cnpj_cliente, cpf_proprietario_loja, telefone_contato, logradouro, numero, bairro, cep, cidade, uf) VALUES
 ('João Heitor Joaquim Castro', 'Joaquim Calçados LTDA', '58.270.422/0001-67', '639.299.202-20', '(65) 2877-5657', 'Rua Sorriso', 244, 'Parque Amperco', '78042-030', 'Cuiabá', 'MT'),
 ('Agatha Ester Campos', 'Calçados D''Agatha INC.', '81.768.471/0001-46', '942.102.529-64', '(82) 2913-7546', 'Rua Sargento Chocolate', 835, 'Guaribas', '57303-731', 'Arapiraca', 'AL'),
 ('Diego Lorenzo Barbosa', 'Barbosa Calçados S.A.', '02.172.926/0001-90', '350.154.868-04', '(62) 98734-9225', 'Avenida Acary Passos', 903, 'Conjunto Residencial Aruanã III', '74740-350', 'Goiânia', 'GO'),
@@ -82,3 +80,12 @@ VALUES
 ('Luiza Bianca Barbosa', 'Sapataria Luiza', '20.319.923/0001-18', '240.001.554-66', '(86) 98197-6023', 'Rua Gislaine Maria Prado', 957, 'São João', '64045-415', 'Teresina', 'PI'),
 ('Carolina Alícia Helena Costa', 'Helena Dospé', '40.393.784/0001-80', '847.188.859-90', '(68) 98655-5811', 'Travessa Mel', 539, 'Eldorado', '69902-503', 'Rio Branco', 'AC'),
 ('Raul Ryan Pedro Pereira', 'Rual Ryan & Ryder LDTA', '57.371.386/0001-65', '914.191.053-29', '(92) 98859-8497', 'Vila Dorinha', 632, 'Centro', '69020-278', 'Manaus', 'AM');
+
+INSERT INTO producao (calcado, tamanho, quantidade, data_producao, situacao) VALUES
+(2, 38, 40, NULL, 1),
+(3, 40, 25, NULL, 2),
+(4, 39, 50, '2017-08-13', 1),
+(1, 36, 20, '2017-07-20', 3),
+(2, 40, 60, NULL, 3),
+(1, 36, 100, '2017-11-30', 3),
+(4, 38, 15, '2017-12-25', -1);

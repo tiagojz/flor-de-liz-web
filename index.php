@@ -66,7 +66,14 @@ part( 'header' );
 		<a class="card-link" href="<?= HOME_URL . '/estoque'; ?>">
 			<div class="card card-home text-white bg-info mb-4">
 				<div class="card-body">
-					<p class="card-number">570</p>
+					<?php
+
+					$saldo = 0;
+					foreach ( Estoque::listar() as $estoque)
+						$saldo += $estoque->get_saldo();
+
+					?>
+					<p class="card-number"><?= $saldo; ?></p>
 					<h4 class="card-title">Estoque</h4>
 				</div>
 			</div>

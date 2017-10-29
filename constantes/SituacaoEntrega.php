@@ -17,18 +17,20 @@ final class SituacaoEntrega {
 	);
 
 	public static function get( $codigo ) {
-		foreach ($nomes as $key => $value)
-			if ( $key === $codigo )
-				return $key;
+		if ( isset( self::$nomes[ intval( $codigo ) ] ) )
+			return intval( $codigo );
 
-		return NAO_INFORMADA;
+		return self::NAO_INFORMADA;
 	}
-	
-	public static function get_nome( $codigo ) {
-		if ( ! empty( $codigo ) && is_int( $codigo) )
-			if ( isset( $nomes[ $codigo ] ) )
-				return $nomes[ $codigo ];
 
-		return $nomes[ NAO_INFORMADA ];
+	public static function get_nome( $codigo ) {
+		if ( isset( self::$nomes[ intval( $codigo ) ] ) )
+			return self::$nomes[ intval( $codigo ) ];
+
+		return 'Não informada';
+	}
+
+	public static function listar() {
+		return self::$nomes;
 	}
 }

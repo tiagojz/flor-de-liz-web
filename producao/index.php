@@ -6,9 +6,9 @@ require_once '../inc/init.php';
 // REMOVER
 
 if ( ! empty( $_GET['remover'] ) ) {
-	$producao = Producao::get( $_GET['remover'] );
-
 	try {
+		$producao = Producao::get( $_GET['remover'] );
+
 		if ( empty( $producao ) )
 			throw new Exception( 'Ordem de produção não cadastrada.' );
 
@@ -113,18 +113,22 @@ part( 'header' );
 
 		<div class="col">
 			<label for="quantidade" class="col-form-label">Quantidade:</label>
-			<input type="number" class="form-control" id="quantidade" name="quantidade" value="<?= isset( $producao ) ? $producao->get_tamanho() : ''; ?>">
+			<input type="number" class="form-control" id="quantidade" name="quantidade" value="<?= isset( $producao ) ? $producao->get_quantidade() : ''; ?>">
 		</div>
 
 		<div class="col">
 			<label for="data_producao" class="col-form-label">Data de produção:</label>
-			<input type="date" class="form-control" id="data_producao" name="data_producao" value="<?= isset( $producao ) ? $producao->get_data_producao() : ''; ?>">
+			<?php $data = isset( $producao ) ? strtotime( $producao->get_data_producao() ) : ''; ?>
+			
+			<input type="date" class="form-control" id="data_producao" name="data_producao" value="<?= date( 'Y-m-d', $data ); ?>">
 		</div>
 
 		<div class="col form-group">
 			<label for="situacao" class="col-form-label">Situação:</label>
 
 			<select id="situacao" class="form-control" name="situacao">
+				<option>-- Selecione --</option>
+
 				<?php foreach( SituacaoProducao::listar() as $codigo => $nome ) : ?>
 					<?php if ( isset( $producao ) && $codigo === $producao->get_situacao() ) : ?>
 						<option selected="selected" value="<?= $codigo; ?>"><?= $nome; ?></option>
