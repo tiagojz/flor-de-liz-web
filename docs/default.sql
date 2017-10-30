@@ -8,6 +8,9 @@ CREATE SEQUENCE seq_colecao START 1;
 CREATE SEQUENCE seq_calcado START 1;
 CREATE SEQUENCE seq_cliente START 1;
 CREATE SEQUENCE seq_producao START 1;
+CREATE SEQUENCE seq_pedido START 1;
+CREATE SEQUENCE seq_pedido_item START 1;
+CREATE SEQUENCE seq_entrega_pedido START 1;
 
 CREATE TABLE colecao (
   codigo integer NOT NULL DEFAULT nextval('seq_colecao'),
@@ -53,6 +56,49 @@ CREATE TABLE producao (
   data_producao timestamp,
   situacao integer NOT NULL,
   PRIMARY KEY (codigo),
+  FOREIGN KEY (calcado) REFERENCES calcado (codigo)
+);
+
+CREATE TABLE pedido (
+  codigo integer NOT NULL DEFAULT nextval('seq_pedido'),
+  cliente integer NOT NULL,
+  nome_cliente varchar(50) NOT NULL,
+  valor_subtotal numeric(10, 2) NOT NULL,
+  desconto numeric(10, 2) NOT NULL,
+  valor_total numeric(10, 2) NOT NULL,
+  situacao integer NOT NULL,
+  PRIMARY KEY (codigo),
+  FOREIGN KEY (cliente) REFERENCES cliente (codigo)
+);
+
+CREATE TABLE pedido_item (
+  codigo integer NOT NULL DEFAULT nextval('seq_pedido_item'),
+  pedido integer NOT NULL,
+  calcado integer NOT NULL,
+  tamanho integer NOT NULL,
+  quantidade integer NOT NULL,
+  valor_unitario numeric(10, 2) NOT NULL,
+  valor_total numeric(10, 2) NOT NULL,
+  situacao integer NOT NULL,
+  PRIMARY KEY (codigo),
+  FOREIGN KEY (pedido) REFERENCES pedido (codigo),
+  FOREIGN KEY (calcado) REFERENCES calcado (codigo)
+);
+
+CREATE TABLE entrega_pedido (
+  codigo integer NOT NULL DEFAULT nextval('seq_entrega_pedido'),
+  pedido integer NOT NULL,
+  situacao integer NOT NULL,
+  PRIMARY KEY (codigo),
+  FOREIGN KEY (pedido) REFERENCES pedido (codigo)
+);
+
+CREATE TABLE entrega_pedido_item (
+  entrega_pedido integer NOT NULL,
+  pedido_item integer NOT NULL,
+  calcado integer NOT NULL,
+  FOREIGN KEY (entrega_pedido) REFERENCES entrega_pedido (codigo),
+  FOREIGN KEY (pedido_item) REFERENCES pedido_item (codigo),
   FOREIGN KEY (calcado) REFERENCES calcado (codigo)
 );
 
